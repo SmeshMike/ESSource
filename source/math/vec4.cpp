@@ -1,38 +1,27 @@
 #include <xmmintrin.h>
 
-void Add(float *a, float *b, float *c)
+void Add(const __m128 &a, const __m128 &b, __m128 &c)
 {
-    __m128 tmpA, tmpB;
-    tmpA = _mm_load_ps(a);
-    tmpB = _mm_load_ps(b);
-    tmpA = _mm_add_ps(tmpA, tmpB);
-    _mm_store_ps(c, tmpA);
+    c = _mm_add_ps(a, b);
 }
 
-void Subtract(float *a, float *b, float *c)
+void Subtract(const __m128 &a, const __m128 &b, __m128 &c)
 {
-    __m128 tmpA, tmpB;
-    tmpA = _mm_load_ps(a);
-    tmpB = _mm_load_ps(b);
-    tmpA = _mm_sub_ps(tmpA, tmpB);
-    _mm_store_ps(c, tmpA);
+    c = _mm_sub_ps(a, b);
 }
 
-void Multiply(float *a, float *b, float *c)
+void Multiply(const __m128 &a, const __m128 &b, __m128 &c)
 {
-    __m128 tmpA, tmpB;
-    tmpA = _mm_load_ps(a);
-    tmpB = _mm_load_ps(b);
-    tmpA = _mm_mul_ps(tmpA, tmpB);
-    _mm_store_ps(c, tmpA);
+    c = _mm_mul_ps(a, b);
 }
 
-void Multiply(float *a, float *b, float *c)
+void Division(const __m128 &a, const __m128 &b, __m128 &c)
 {
-    __m128 tmpA, tmpB;
-    tmpA = _mm_load_ps(a);
-    tmpB = _mm_load_ps(b);
-    tmpA = _mm_div_ps (tmpA, tmpB);
-    _mm_store_ps(c, tmpA);
+    c = _mm_div_ps (a, b);
+}
+
+void Normalize(const __m128 &a, const __m128 &b, __m128 &c)
+{
+    c = _mm_div_ps (a, _mm_rsqrt_ps (b));
 }
 

@@ -1,4 +1,4 @@
-#include <xmmintrin.h>
+#include "vec.hpp"
 
 union innervector
 {
@@ -48,12 +48,13 @@ public:
 
     vec4 operator=(const vec4& other)
     {
-        (*this).memory = other.memory;
+        memory = other.memory;
+        return *this;
     }
 
-    friend bool operator==(vec4 a, const vec4& b)
+    bool operator==(const vec4& a)
     {
-        return (a.memory._f[0]==b.memory._f[0]) &&(a.memory._f[1]==b.memory._f[1]) &&(a.memory._f[2]==b.memory._f[2]) &&(a.memory._f[3]==b.memory._f[3]);
+        return (memory._f[0]==a.memory._f[0]) &&(memory._f[1]==a.memory._f[1]) &&(memory._f[2]==a.memory._f[2]) &&(memory._f[3]==a.memory._f[3]);
     }
 
     friend bool operator!=(vec4 a, const vec4& b)
@@ -85,28 +86,28 @@ public:
         return *this;
     }
 
-    friend vec4 operator+(vec4 a, const vec4& b)
+    friend vec4 operator+(const vec4& a, const vec4& b)
     {
         vec4 result = a;
         result += b;
         return result;
     }
 
-    friend vec4 operator-(vec4 a, const vec4& b)
+    friend vec4 operator-(const vec4& a, const vec4& b)
     {
         vec4 result = a;
         result -= b;
         return result;
     }
 
-    friend vec4 operator*(vec4 a, const vec4& b)
+    friend vec4 operator*(const vec4& a, const vec4& b)
     {
         vec4 result = a;
         result *= b;
         return result;
     }
 
-    friend vec4 operator/(vec4 a, const vec4& b)
+    friend vec4 operator/(const vec4& a, const vec4& b)
     {
         vec4 result = a;
         result /= b;

@@ -2,25 +2,21 @@
 #ifndef __ESVEC_H__
 #define __ESVEC_H__
 
-class v2 
+class vector
 {
 private:
-    float mem[2] = { 0.0, 0.0 };
+
 public:
-    
-    // Initializatiors
-    v2() {};
-    v2(const float const vector[2]);
-    
-    // Operators
-    void x(float);
-    float x();
 
-    void y(float);
-    float y();
+    void Add(const __m128 &a, const __m128 &b, __m128 &c);
 
-    // Algs
-    void normilse();
+    void Subtract(const __m128 &a, const __m128 &b, __m128 &c);
+
+    void Multiply(const __m128 &a, const __m128 &b, __m128 &c);
+
+    void Divide(const __m128 &a, const __m128 &b, __m128 &c);
+
+    void Normalize(const __m128 &a, const __m128 &b, __m128 &c);
 };
 
 #endif __ESVEC_H__
